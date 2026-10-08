@@ -3,109 +3,137 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex, nofollow">
 <title>Watchpoint Research</title>
-<meta name="description" content="Independent research dashboards for fire weather, storms and hillside hazards. Situational awareness only.">
+<meta name="description" content="Independent research in operations research, human factors, and wildfire and storm risk.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%230b0b0c'/%3E%3Ccircle cx='17' cy='17' r='9' fill='none' stroke='%23c9c4bb' stroke-width='1.6'/%3E%3Ccircle cx='17' cy='17' r='2.4' fill='%23c9c4bb'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f3ee; --surface:#ffffff; --ink:#1c1917; --muted:#57534e; --line:#e7e1d8;
-  --ember:#c2410c; --ember-soft:#fff1e8; --sky:#1d4ed8; --sky-soft:#eaf0ff;
-  --earth:#78543a; --earth-soft:#f5ece4; --ok:#15803d;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121110; --surface:#1c1a18; --ink:#f3efe9; --muted:#a8a29e; --line:#2e2a27;
-    --ember:#fb923c; --ember-soft:#2a1a10; --sky:#7aa2ff; --sky-soft:#141c30;
-    --earth:#d4a882; --earth-soft:#241c15; --ok:#4ade80;
-  }
+  --stone:#0b0b0c; --stone-2:#141415; --ink:#d9d4cb; --dim:#7d7973; --faint:#4a4844; --line:rgba(217,212,203,.12);
 }
 *{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header{padding:56px 0 36px;border-bottom:1px solid var(--line)}
-.mark{display:flex;align-items:center;gap:12px;margin-bottom:28px}
-.mark svg{flex:none}
-.mark span{font:700 15px/1 "Barlow Condensed",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-h1{font:700 clamp(40px,7vw,64px)/1 "Barlow Condensed",sans-serif;letter-spacing:.01em;margin:0 0 16px;text-transform:uppercase}
-.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:620px;margin:0}
-h2{font:700 14px/1 "Barlow Condensed",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:44px 0 18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .15s,border-color .15s}
-.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--accent)}
-a.card:hover{transform:translateY(-2px);border-color:var(--accent)}
-.card.fire{--accent:var(--ember);--soft:var(--ember-soft)}
-.card.storm{--accent:var(--sky);--soft:var(--sky-soft)}
-.card.debris{--accent:var(--earth);--soft:var(--earth-soft)}
-.icon{width:44px;height:44px;border-radius:10px;background:var(--soft);display:grid;place-items:center;color:var(--accent)}
-.card h3{font:700 24px/1.1 "Barlow Condensed",sans-serif;margin:0;letter-spacing:.01em}
-.card p{margin:0;color:var(--muted);font-size:15px;flex:1}
-.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;font-weight:600}
-.pill{padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
-.pill.live{color:var(--ok);border-color:currentColor}
-.pill.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}
-.go{color:var(--accent);margin-left:auto}
-.card.soon{opacity:.72}
-.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;color:var(--muted);font-size:15px}
-.about strong{color:var(--ink);display:block;margin-bottom:4px;font-weight:600}
-.notice{margin:44px 0 0;padding:18px 20px;border-radius:12px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ember);font-size:14px;color:var(--muted)}
-.notice strong{color:var(--ink)}
-footer{padding:32px 0 48px;font-size:13px;color:var(--muted)}
-footer p{margin:4px 0}
+html,body{margin:0;height:100%}
+body{
+  background:var(--stone);color:var(--ink);
+  font:300 15px/1.7 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;
+  position:relative;overflow-x:hidden;
+}
+/* black stone: soft light falloff + fine grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(120% 80% at 50% 38%, #1a1a1b 0%, #0e0e0f 45%, #070708 100%);
+}
+body::after{
+  content:"";position:fixed;inset:-50%;pointer-events:none;z-index:0;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.layer{position:relative;z-index:1}
+
+.top,.bottom{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:22px 28px;font:400 11px/1 "IBM Plex Mono",ui-monospace,monospace;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
+}
+.top .status{display:flex;align-items:center;gap:10px}
+.top .status i{width:6px;height:6px;border-radius:50%;background:var(--dim);display:inline-block;animation:breathe 4.5s ease-in-out infinite}
+
+main{flex:1;display:grid;place-items:center;padding:24px 20px}
+.center{text-align:center;max-width:640px}
+
+.mark{display:block;margin:0 auto 44px;width:132px;height:132px}
+.mark .sweep{transform-origin:66px 66px;animation:turn 48s linear infinite}
+.mark .core{animation:breathe 4.5s ease-in-out infinite}
+
+h1{
+  margin:0 auto;max-width:560px;font-weight:300;font-size:clamp(20px,4.2vw,30px);
+  letter-spacing:.42em;text-transform:uppercase;color:var(--ink);
+  padding-left:.42em; /* optically recenters the tracked text */
+}
+.rule{width:44px;height:1px;background:var(--line);margin:30px auto}
+.line{margin:0;color:var(--dim);font-size:15px;letter-spacing:.02em}
+.mission{margin:14px auto 0;max-width:600px;color:var(--faint);font-size:13.5px;line-height:1.65;letter-spacing:.02em}
+.fields{
+  list-style:none;margin:30px 0 0;padding:0;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;
+  font:400 10.5px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+}
+.fields li{white-space:nowrap}
+.fields li+li::before{content:"·";margin:0 .9em;color:var(--faint)}
+
+.inquiries{margin-top:56px;font:400 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.inquiries a{
+  display:inline-block;margin-top:14px;color:var(--dim);text-decoration:none;
+  font:300 14px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:none;
+  padding-bottom:6px;border-bottom:1px solid var(--line);transition:color .4s,border-color .4s;
+}
+.inquiries a:hover,.inquiries a:focus-visible{color:var(--ink);border-color:var(--dim);outline:none}
+
+@keyframes turn{to{transform:rotate(360deg)}}
+@keyframes breathe{0%,100%{opacity:.35}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  .mark .sweep,.mark .core,.top .status i{animation:none}
+}
+@media (max-width:520px){
+  .top,.bottom{padding:18px 16px;letter-spacing:.16em}
+  .bottom span:last-child{display:none}
+  .mark{width:108px;height:108px;margin-bottom:36px}
+  .fields{flex-direction:column;align-items:center;gap:12px}
+  .fields li+li::before{content:none}
+}
+.fade{opacity:0;animation:fadein 1.6s ease forwards}
+.fade.d2{animation-delay:.5s}.fade.d3{animation-delay:1s}.fade.d4{animation-delay:1.5s}
+@keyframes fadein{to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.fade{opacity:1;animation:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="mark">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15.5" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><circle cx="17" cy="17" r="9" fill="none" stroke="var(--ember)" stroke-width="2"/><circle cx="17" cy="17" r="3" fill="var(--ember)"/><path d="M17 0v6M17 28v6M0 17h6M28 17h6" stroke="currentColor" stroke-width="2" opacity=".35"/></svg>
-      <span>Watchpoint Research</span>
+
+<div class="top layer fade">
+  <span>WPR</span>
+  <span class="status"><i></i>Observing</span>
+</div>
+
+<main class="layer">
+  <div class="center">
+    <svg class="mark fade" viewBox="0 0 132 132" aria-hidden="true">
+      <circle cx="66" cy="66" r="64" fill="none" stroke="#d9d4cb" stroke-opacity=".10" stroke-width="1"/>
+      <circle cx="66" cy="66" r="42" fill="none" stroke="#d9d4cb" stroke-opacity=".28" stroke-width="1"/>
+      <path d="M66 0v14M66 118v14M0 66h14M118 66h14" stroke="#d9d4cb" stroke-opacity=".22" stroke-width="1"/>
+      <g class="sweep">
+        <path d="M66 24 A42 42 0 0 1 102.4 45" fill="none" stroke="#d9d4cb" stroke-opacity=".75" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+      <circle class="core" cx="66" cy="66" r="3" fill="#d9d4cb"/>
+    </svg>
+
+    <h1 class="fade d2">Watchpoint Research</h1>
+    <div class="rule fade d3"></div>
+    <p class="line fade d3">Independent research. Shared by invitation.</p>
+    <p class="mission fade d3">Studying how people, systems, and decisions perform under emergency conditions.</p>
+    <ul class="fields fade d4" aria-label="Areas of research">
+      <li>Operations Research</li>
+      <li>Human Factors</li>
+      <li>Wildfire &amp; Storm Risk</li>
+    </ul>
+
+    <div class="inquiries fade d4">
+      Inquiries<br>
+      <a href="mailto:info@watchpointresearch.com">info@watchpointresearch.com</a>
     </div>
-    <h1>Know the conditions<br>before the call.</h1>
-    <p class="lede">Independent research dashboards that pull live weather, fuel and hazard data into one place for the people who work hillside and coastal incidents.</p>
   </div>
-</header>
-
-<main class="wrap">
-  <h2>Dashboards</h2>
-  <div class="grid">
-    <a class="card fire" href="https://fire.watchpointresearch.com">
-      <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4 0 7-2.7 7-6.8 0-3.3-2-5.6-3.6-7.4-.4 1.8-1.4 3-2.6 3.4.3-3.4-1-6.6-3.8-9.2-.3 3.6-2.6 5.8-4 8C3.7 11.6 5 22 12 22z"/></svg></div>
-      <h3>Hillside Fire Watch</h3>
-      <p>Fire weather, Red Flag triggers, fuel moisture, burning index, cameras and a deployment planner for the hillside interface.</p>
-      <div class="meta"><span class="pill live">Live</span><span class="pill">Password required</span><span class="go">Open →</span></div>
-    </a>
-    <a class="card storm" href="https://storm.watchpointresearch.com">
-      <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 17H7a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 9 4 4 0 0 1 17.5 17z"/><path d="M8 20l1-2M12 21l1-3M16 20l1-2"/></svg></div>
-      <h3>Storm Track</h3>
-      <p>Atmospheric rivers, tides, surf and rainfall timing for the South Bay coast, with storm drain and bluff watch layers.</p>
-      <div class="meta"><span class="pill live">Live</span><span class="pill">Password required</span><span class="go">Open →</span></div>
-    </a>
-    <div class="card debris soon">
-      <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z"/><path d="M14 5l1 2M18 4l-1 2M11 3l1 2"/></svg></div>
-      <h3>Debris Flow &amp; Heavy Rain Watch</h3>
-      <p>Rainfall intensity against burn-scar thresholds, for storm preparation below recent fires.</p>
-      <div class="meta"><span class="pill">Coming soon</span></div>
-    </div>
-  </div>
-
-  <h2>About this work</h2>
-  <div class="about">
-    <div><strong>Independent research</strong>These dashboards are developed as part of independent research on fire weather and hillside hazards, and are shared with the people who can use them.</div>
-    <div><strong>Built for the field</strong>Each is a single page that works on a phone, needs no app or login beyond a shared password, and shows how to read every gauge.</div>
-    <div><strong>Public data</strong>Data comes from the National Weather Service, Synoptic Data PBC, ALERTCalifornia and other public sources, credited on each dashboard.</div>
-  </div>
-
-  <div class="notice"><strong>Situational awareness only.</strong> Nothing on this site is an official document or an order. Guidelines and watch outs are shared for reference and awareness.</div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>Watchpoint Research. Developed by PB.</p>
-    <p>Station data courtesy of Synoptic Data PBC and the National Weather Service.</p>
-  </div>
-</footer>
+<div class="bottom layer fade d4">
+  <span>Not affiliated with any agency</span>
+  <span>Est. 2026</span>
+</div>
+
 </body>
 </html>
