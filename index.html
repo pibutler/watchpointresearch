@@ -42,6 +42,9 @@ body::after{
   padding:22px 28px;font:400 11px/1 "IBM Plex Mono",ui-monospace,monospace;
   letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
 }
+.top .right{display:flex;align-items:center;gap:26px}
+.top a.dash{color:var(--faint);text-decoration:none;transition:color .4s}
+.top a.dash:hover,.top a.dash:focus-visible{color:var(--ink);outline:none}
 .top .status{display:flex;align-items:center;gap:10px}
 .top .status i{width:6px;height:6px;border-radius:50%;background:var(--dim);display:inline-block;animation:breathe 4.5s ease-in-out infinite}
 
@@ -83,6 +86,7 @@ h1{
 }
 @media (max-width:520px){
   .top,.bottom{padding:18px 16px;letter-spacing:.16em}
+  .top .right{gap:16px}
   .bottom span:last-child{display:none}
   .mark{width:108px;height:108px;margin-bottom:36px}
   .fields{flex-direction:column;align-items:center;gap:12px}
@@ -98,7 +102,7 @@ h1{
 
 <div class="top layer fade">
   <span>WPR</span>
-  <span class="status"><i></i>Observing</span>
+  <span class="right"><a class="dash" href="/dashboards/">Dashboards</a><span class="status"><i></i>Observing</span></span>
 </div>
 
 <main class="layer">
