@@ -6,14 +6,14 @@
 <meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex, nofollow">
 <title>Watchpoint Research</title>
-<meta name="description" content="Independent research in operations research, human factors, and wildfire and storm risk.">
+<meta name="description" content="Watchpoint Research. Independent research. Shared by invitation.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%230b0b0c'/%3E%3Ccircle cx='17' cy='17' r='9' fill='none' stroke='%23c9c4bb' stroke-width='1.6'/%3E%3Ccircle cx='17' cy='17' r='2.4' fill='%23c9c4bb'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --stone:#0b0b0c; --stone-2:#141415; --ink:#d9d4cb; --dim:#7d7973; --faint:#4a4844; --line:rgba(217,212,203,.12);
+  --stone:#0b0b0c; --stone-2:#141415; --ink:#d9d4cb; --dim:#a39e96; --faint:#6f6b65; --line:rgba(217,212,203,.12);
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
@@ -49,7 +49,7 @@ body::after{
 .top .status i{width:6px;height:6px;border-radius:50%;background:var(--dim);display:inline-block;animation:breathe 4.5s ease-in-out infinite}
 
 main{flex:1;display:grid;place-items:center;padding:24px 20px}
-.center{text-align:center;max-width:640px}
+.center{text-align:center;max-width:800px}
 
 .mark{display:block;margin:0 auto 44px;width:132px;height:132px}
 .mark .sweep{transform-origin:66px 66px;animation:turn 48s linear infinite}
@@ -61,12 +61,12 @@ h1{
   padding-left:.42em; /* optically recenters the tracked text */
 }
 .rule{width:44px;height:1px;background:var(--line);margin:30px auto}
-.line{margin:0;color:var(--dim);font-size:15px;letter-spacing:.02em}
-.mission{margin:14px auto 0;max-width:600px;color:var(--faint);font-size:13.5px;line-height:1.65;letter-spacing:.02em}
+.line{margin:0;color:#cfcac1;font-size:16.5px;letter-spacing:.02em}
+.mission{margin:16px auto 0;max-width:600px;text-wrap:balance;color:var(--dim);font-size:15px;line-height:1.65;letter-spacing:.02em}
 .fields{
   list-style:none;margin:30px 0 0;padding:0;
   display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;
-  font:400 10.5px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+  font:400 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
 }
 .fields li{white-space:nowrap}
 .fields li+li::before{content:"·";margin:0 .9em;color:var(--faint)}
@@ -84,6 +84,7 @@ h1{
 @media (prefers-reduced-motion: reduce){
   .mark .sweep,.mark .core,.top .status i{animation:none}
 }
+@media (max-width:860px){.fields{flex-direction:column;align-items:center;gap:12px}.fields li+li::before{content:none}}
 @media (max-width:520px){
   .top,.bottom{padding:18px 16px;letter-spacing:.16em}
   .top .right{gap:16px}
@@ -120,11 +121,11 @@ h1{
     <h1 class="fade d2">Watchpoint Research<sup class="tm">&trade;</sup></h1>
     <div class="rule fade d3"></div>
     <p class="line fade d3">Independent research. Shared by invitation.</p>
-    <p class="mission fade d3">Studying how people, systems, and decisions perform under emergency conditions.</p>
     <ul class="fields fade d4" aria-label="Areas of research">
-      <li>Operations Research</li>
+      <li>Wildfire</li>
+      <li>High-Consequence Incidents</li>
+      <li>Planning &amp; Command</li>
       <li>Human Factors</li>
-      <li>Wildfire &amp; Storm Risk</li>
     </ul>
 
     <div class="inquiries fade d4">
